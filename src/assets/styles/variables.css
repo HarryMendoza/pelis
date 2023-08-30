@@ -1,0 +1,60 @@
+.container {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: space-between; 
+    gap: 16px; 
+    padding: 16px; 
+}
+
+.app-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    background-color: #333;
+}
+
+.yellow-button {
+    background-color: #FFD700; 
+    color: #000; 
+    border: none; 
+    padding: 0.5rem 1rem; 
+    border-radius: 4px; 
+    cursor: pointer; 
+    transition: background-color 0.3s; 
+    font-weight: bold;  /* Letra en negrita */
+
+    width: 70%; 
+    max-width: 60px; /* Tamaño máximo del botón */
+
+    font-size: calc(1rem + 0.5vmin); /* Tamaño de letra adaptativo */
+
+    &:hover {
+        background-color: #FFC107; 
+    }
+}
+
+.card {
+    flex: 1;
+    min-width: calc(100% - 32px);
+    box-sizing: border-box;
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+}
+
+@media (min-width: 600px) {
+    .card {
+        min-width: calc(50% - 32px);
+    }
+}
+
+@media (min-width: 900px) {
+    .card {
+        min-width: calc(33.33% - 32px);
+    }
+}

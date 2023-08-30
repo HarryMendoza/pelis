@@ -1,85 +1,61 @@
-<script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-  <RouterView />
+  <div id="app">
+    <header class="app-header">
+      <Button type="primary" class="yellow-button">IMDb</Button>
+      <Navbar />
+      <SettingsButton />
+      <Avatar imageUrl="https://i.pinimg.com/564x/56/5c/34/565c34434a73fbfb77e72aaebb986ef4.jpg" />
+    </header>
+    
+    <MovieList />
+    
+    <Card
+      :image="'ruta/a/tu/imagen.jpg'"
+      title="Título de la Tarjeta"
+      description="Esta es una descripción para la tarjeta"
+    >
+      <Button type="primary" @click="handleButtonClick">Haz clic en mí</Button>
+    </Card>
+  </div>
 </template>
 
+
+
+<script lang="ts">
+import { defineComponent } from 'vue';
+import MovieList from './components/Movie_list.vue';
+import Card from './components/common/Card.vue';
+import Button from './components/common/Button.vue';
+import Navbar from './components/common/Navbar.vue';
+import SettingsButton from './components/common/SettingsButton.vue';  // Asumiendo que tienes un componente para esto
+import Avatar from './components/common/Avatar.vue';  // Asumiendo que tienes un componente para esto
+import './assets/styles/variables.css'
+
+
+export default defineComponent({
+  name: 'App',
+  components: {
+    Card,
+    Button,
+    MovieList,
+    Navbar,
+    SettingsButton,  // Si tienes este componente
+    Avatar  // Si tienes este componente
+  },
+  methods: {
+    handleButtonClick() {
+      alert('¡Botón presionado!');
+    }
+  }
+});
+</script>
+
 <style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
+/* Ajustes de estilos */
+.top-left-button {
+  position: absolute;
+  top: 10px;
+  left: 10px;
 }
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
-}
+/* Puedes añadir más estilos según lo necesites */
 </style>
